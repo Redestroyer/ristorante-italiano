@@ -7,6 +7,7 @@ export interface AppError extends Error {
 export default (err: AppError, req: Request, res: Response, next: NextFunction) => {
     console.error(err);
     res.status(err.status_code || 500).json({
+        code: err.status_code || 500,
         message: err.message || "Internal Server Error (unspecified)"
     });
 }
