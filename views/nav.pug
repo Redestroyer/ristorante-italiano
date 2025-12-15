@@ -14,7 +14,7 @@ nav.navbar.navbar-expand-lg.bg-primary(data-bs-theme="dark")
                     { name: "Prenotazioni", link: "/reserving" },
                     { name: "Contattaci", link: "/contact" },
                 ];
-            ul.navbar-nav.ms-auto
+            ol.navbar-nav.ms-auto
                 each page in pages
                     - const current = title == page.name;
                     li.nav-item
