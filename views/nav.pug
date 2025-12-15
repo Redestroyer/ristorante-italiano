@@ -9,12 +9,13 @@ nav.navbar.navbar-expand-lg.bg-primary(data-bs-theme="dark")
             -
                 const pages = [
                     { name: "Inizio", link: "/" },
-                    { name: "Chi siamo", link: "/about" },
+                    { name: "Chi Siamo", link: "/about" },
                     { name: "Menu", link: "/menu" },
                     { name: "Prenotazioni", link: "/reserving" },
                     { name: "Contattaci", link: "/contact" },
                 ];
             ul.navbar-nav.ms-auto
                 each page in pages
+                    - const current = title == page.name;
                     li.nav-item
-                        a.nav-link(href=page.link)= page.name
+                        a.nav-link(href=page.link, class={active:current}, aria-current=current)= page.name
