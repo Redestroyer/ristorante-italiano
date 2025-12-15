@@ -1,0 +1,21 @@
+extends layout.pug
+
+block content
+    header
+        h1 Contattaci
+        p Siamo qui per aiutarti! Compila il modulo sottostante per metterti in contatto con noi.
+    section
+        if success
+            .alert.alert-success.mt-3 Il tuo messaggio è stato inviato con successo! Ti risponderemo al più presto.
+        form(action="/contact", method="post")
+            .row
+                .col.mb-3
+                    label.form-label(for="name") Nome
+                    input.form-control(type="text", id="name", name="name", required=true)
+                .col.mb-3
+                    label.form-label(for="email") Email
+                    input.form-control(type="email", id="email", name="email", required=true)
+            .mb-3
+                label.form-label(for="message") Messaggio
+                textarea.form-control(id="message", name="message", rows="5", required=true)
+            button.btn.btn-primary(type="submit") Invia

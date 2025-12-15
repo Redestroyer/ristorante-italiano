@@ -6,6 +6,10 @@ html(lang="en")
         title Ristorante Italiano - #{title || "(unknown)"}
         link(rel="stylesheet", href="/css/bootstrap")
         block head
+            link(rel="stylesheet", href="/css/global")
     body
+        include nav.pug
         block content
+        include footer.pug
+        script(src="/js/bootstrap")
         

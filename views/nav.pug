@@ -1,0 +1,20 @@
+nav.navbar.navbar-expand-lg.bg-primary(data-bs-theme="dark")
+    .container-fluid
+        a.navbar-brand(href="/")
+            img(src="images/logo", alt="Logo", width="32", height="32", class="d-inline-block align-text-top")
+            | Ristorante Italiano
+        button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+            span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+            -
+                const pages = [
+                    { name: "Inizio", link: "/" },
+                    { name: "Chi siamo", link: "/about" },
+                    { name: "Menu", link: "/menu" },
+                    { name: "Prenotazioni", link: "/reserving" },
+                    { name: "Contattaci", link: "/contact" },
+                ];
+            ul.navbar-nav.ms-auto
+                each page in pages
+                    li.nav-item
+                        a.nav-link(href=page.link)= page.name

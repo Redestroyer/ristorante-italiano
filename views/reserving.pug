@@ -1,0 +1,31 @@
+extends layout.pug
+
+block content
+    header
+        h1 Prenota un Tavolo
+        p Assicurati il tuo posto nella nostra tavola calda italiana! Compila il modulo sottostante per effettuare una prenotazione.
+    section
+        if success
+            .alert.alert-success.mt-3 La tua prenotazione è stata effettuata con successo! Non vediamo l'ora di accoglierti.
+        form.g-3(action="/reserving", method="post")
+            .row
+                .col.mb-1
+                    label.form-label(for="name") Nome
+                    input.form-control(type="text", id="name", name="name", required=true)
+                .col.mb-1
+                    label.form-label(for="email") Email
+                    input.form-control(type="email", id="email", name="email", required=true)
+                .col.mb-1
+                    label.form-label(for="phone") Numero di Telefono
+                    input.form-control(type="tel", id="phone", name="phone", required=true)
+            .row
+                .col.mb-1
+                    label.form-label(for="date") Data della Prenotazione
+                    input.form-control(type="date", id="date", name="date", required=true, min=new Date().toISOString().split('T')[0])
+                .col.mb-1
+                    label.form-label(for="time") Ora della Prenotazione
+                    input.form-control(type="time", id="time", name="time", required=true, min="6:00", max="21:30")
+                .col.mb-1
+                    label.form-label(for="guests") Numero di Ospiti
+                    input.form-control(type="number", id="guests", name="guests", min="1", required=true)
+            button.btn.btn-primary(type="submit") Prenota Ora

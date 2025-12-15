@@ -1,4 +1,20 @@
 extends layout.pug
 
 block content
-    h1 Hail!
+    header
+        h1 Benvenuti nella nostra tavola calda!
+        p Qui troverete il vero cibo italiano!
+    #carousel.carousel.slide.d-block.mx-auto(data-bs-ride="carousel")
+        -
+            const images = ["Exterior1", "Interior1", "MargheritaPizza", "Cleiton", "Lasagna"];
+        .carousel-inner
+            each value, index in images
+                .carousel-item(class={active: index === 0}, data-bs-interval="5000")
+                    img.d-block.mx-auto(src=`/images/${value}`, alt=value, height="500")
+    section
+        h2 La Nostra Specialità
+        p Vieni a provare i nostri piatti autentici preparati con ingredienti freschi e di alta qualità. Dalla pasta fatta in casa alle pizze cotte nel forno a legna, ogni boccone è un viaggio in Italia.
+    section
+        h2 Orari di Apertura
+        p Orari di apertura. Siamo aperti quasi tutto il giorno, dalle 6:00 alle 21:30, il che ci rende un'ottima scelta per la vostra colazione, pranzo o cena!
+        

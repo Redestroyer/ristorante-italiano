@@ -1,0 +1,33 @@
+extends layout.pug
+
+block content
+    header
+        h1 Il nostro Menù
+        p Scopri i piatti deliziosi che offriamo!
+    section
+        h2 Il nostro menù
+        #carouselMenu.carousel.slide.d-block.mx-auto.w-50.bg-dark(style="min-height: 300px;")
+            -
+                const food = [
+                    { name: "Spaghetti Carbonara", price: 12, image: "SpaghettiCarbonara" },
+                    { name: "Margherita Pizza", price: 10, image: "MargheritaPizza" },
+                    { name: "Tiramisu", price: 6, image: "Tiramisu" },
+                    { name: "<b>La nostra targa distintiva: Ravioli con Spinaci, Carciofi, Capperi e Pomodori Secchi</b>", price: 20, image: "RavioliSquisiti" },
+                    { name: "Zuppa di Lenticchie", price: 8, image: "ZuppaDiLenticchie" },
+                    { name: "Lasagna", price: 14, image: "Lasagna" },
+                    { name: "Fagioli Bianchi", price: 7, image: "FagioliBianchi" },
+                ];
+            .carousel-indicators
+                each _, index in food
+                    button(type="button", data-bs-target="#carouselMenu", data-bs-slide-to=index, aria-label=`Slide ${index + 1}` class={active: index === 0}, aria-current=(index === 0).toString())
+            .carousel-inner
+                each value, index in food
+                    .carousel-item(class={active: index === 0})
+                        img.d-block.mx-auto(src=`/images/${value.image}`, alt=value.name, width="500", height="500")
+                        .carousel-caption.d-block.bg-dark.bg-opacity-50
+                            h5!= value.name
+                            p €#{value.price}
+            - for (var [direction, label] of [['prev', 'Previous'], ['next', 'Next']])
+                button(type="button", data-bs-target="#carouselMenu", data-bs-slide=direction, class=`carousel-control-${direction}`)
+                    span(aria-hidden="true", class=`carousel-control-${direction}-icon`)
+                    span.visually-hidden= label

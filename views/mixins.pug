@@ -1,0 +1,32 @@
+//-
+    This mixin creates a Bootstrap carousel. The first parameter must be the name of the mixin for the carousel items, and the second one an array of data to be passed to each mixin call.
+mixin bs-carousel(id, mixinName, data)
+    .carousel.slide(id=id)
+        .carousel-inner
+            each item, index in data
+                .carousel-item(class={active: index === 0})
+                    //- Dynamic mixins! :)
+                    +#{mixinName}(item)
+        mixin bs-carousel-button(direction, label)
+            button(type="button", data-bs-target="#carouselMenu", data-bs-slide=direction, class=`carousel-control-${direction}`)
+                span(aria-hidden="true", class=`carousel-control-${direction}-icon`)
+                span.visually-hidden= label
+        +bs-carousel-button('prev', 'Previous')
+        +bs-carousel-button('next', 'Next')
+
+mixin bs-carousel-with-indicators(id, mixinName, data)
+    .carousel.slide(id=id)
+        .carousel-indicators
+            each _, index in data
+                button(type="button", data-bs-target=`#${id}`, data-bs-slide-to=index, aria-label=`Slide ${index + 1}` class={active: index === 0}, aria-current=(index === 0).toString())
+        .carousel-inner
+            each item, index in data
+                .carousel-item(class={active: index === 0})
+                    //- Dynamic mixins! :)
+                    +#{mixinName}(item)
+        mixin bs-carousel-button(direction, label)
+            button(type="button", data-bs-target=`#${id}`, data-bs-slide=direction, class=`carousel-control-${direction}`)
+                span(aria-hidden="true", class=`carousel-control-${direction}-icon`)
+                span.visually-hidden= label
+        +bs-carousel-button('prev', 'Previous')
+        +bs-carousel-button('next', 'Next')
