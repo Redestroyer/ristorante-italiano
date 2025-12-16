@@ -1,0 +1,9 @@
+[
+    { "name": "Spaghetti Carbonara", "price": 12, "image": "SpaghettiCarbonara" },
+    { "name": "Margherita Pizza", "price": 10, "image": "MargheritaPizza" },
+    { "name": "Tiramisu", "price": 6, "image": "Tiramisu" },
+    { "name": "<b>La nostra targa distintiva: Ravioli con Spinaci, Carciofi, Capperi e Pomodori Secchi</b>", "price": 20, "image": "RavioliSquisiti" },
+    { "name": "Zuppa di Lenticchie", "price": 8, "image": "ZuppaDiLenticchie" },
+    { "name": "Lasagna", "price": 14, "image": "Lasagna" },
+    { "name": "Fagioli Bianchi", "price": 7, "image": "FagioliBianchi" }
+]

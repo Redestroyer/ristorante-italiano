@@ -17,10 +17,19 @@ App.set("view engine", "pug").set("views", "./views");
 
 App.get("/favicon.ico", (req, res, next) => {
     res.sendFile(path.join(process.cwd(), "/public/favicon.ico"));
+}).get("/css/bootstrap", (req, res, next) => {
+    res.sendFile(path.join(process.cwd(), "/node_modules/bootstrap/dist/css/bootstrap.css"));
+}).get("/js/bootstrap", (req, res, next) => {
+    res.sendFile(path.join(process.cwd(), "/node_modules/bootstrap/dist/js/bootstrap.bundle.js"));
+}).get("/css/bootstrap-icons", (req, res, next) => {
+    res.sendFile(path.join(process.cwd(), "/node_modules/bootstrap-icons/font/bootstrap-icons.css"));
 });
 App.use("/css", Express.static(path.join(process.cwd(), "/public/css"), { extensions: ["css"] }))
 App.use("/js", Express.static(path.join(process.cwd(), "/public/js"), { extensions: ["js"] }))
 App.use("/images", Express.static(path.join(process.cwd(), "/public/images"), { extensions: ["png", "jpg", "jpeg", "gif", "svg"] }));
+App.use("/json", Express.static(path.join(process.cwd(), "/public/json"), { extensions: ["json"] }));
+App.use("/fonts", Express.static(path.join(process.cwd(), "/public/fonts")));
+
 App.use("/", index);
 
 // After every other routers.

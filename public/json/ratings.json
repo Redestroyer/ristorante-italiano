@@ -1,0 +1,6 @@
+[
+    { "author": "Massimo Bottura", "occupation": "capocuoco e conduttore televisivo", "rating": 10, "quote": "Un'esperienza culinaria straordinaria! Ogni piatto è una celebrazione della tradizione italiana con un tocco moderno. Bravi!" },
+    { "author": "Nigella Lawson", "occupation": "scrittrice di cucina britannica", "rating": 8, "quote": "L'atmosfera accogliente e il cibo delizioso rendono questo ristorante un luogo perfetto per una serata speciale. Delizioso!" },
+    { "author": "Gordon Ramsay", "occupation": "capocuoco britannico", "rating": 9, "quote": "Il cibo qui è davvero ottimo. Non so cosa mi aspettassi, ma credo di averlo sottovalutato. <i>I mean, really, I am sorry for underestimating you, lads.</i>" },
+    { "author": "Jamie Oliver", "occupation": "capocuoco britannico", "rating": 9, "quote": "La passione per gli ingredienti freschi e di alta qualità si riflette in ogni piatto. Un vero gioiello italiano! <i>Fantastic!</i>" }
+]

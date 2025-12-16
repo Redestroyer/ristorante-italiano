@@ -10,3 +10,29 @@ block content
     section
         h2 Il Nostro Team
         p Il nostro team è composto da chef esperti e appassionati che lavorano insieme per creare piatti deliziosi utilizzando ingredienti freschi e di alta qualità.
+    section 
+        h2 Valutazioni
+        p I nostri clienti ci valutano con una media di 9.6 stelle su 10, grazie alla nostra dedizione alla qualità e al servizio eccellente.
+        h4 Valutazioni principali
+        //- Ratings.
+        div.row(style={width: "72rem"})
+            //-
+                .card
+                    .card-body
+                        blockquote.blockquote
+                            p "Il cibo qui è davvero ottimo. Non so cosa mi aspettassi, ma credo di averlo sottovalutato. #[i I mean, really, I am sorry for underestimating you, lads.]"
+                            footer.blockquote-footer #[i Gordon Ramsay], capocuoco britannico
+            -
+                // There is padding for `padEnd` to work correctly.
+                const star     = "<i class='bi bi-star'     ></i>"; // 
+                const halfStar = "<i class='bi bi-star-half'></i>"; // 
+                const fullStar = "<i class='bi bi-star-fill'></i>"; // 
+            each rating in ratings
+                .col.card
+                    .card-body
+                        h5.card-title!= (fullStar.repeat(Math.floor(rating.rating/2)) + (rating.rating % 2 ? halfStar : "")).padEnd(155, star)
+                        blockquote.blockquote
+                            p "!{rating.quote}"
+                            footer.blockquote-footer
+                                i= rating.author
+                                | , #{rating.occupation}

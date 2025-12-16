@@ -1,10 +1,14 @@
 doctype html
+//-
+    const jstransformer = require("jstransformer");
+    const markdown = jstransformer(require("jstransformer-markdown-it"));
 html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Ristorante Italiano - #{title || "(unknown)"}
         link(rel="stylesheet", href="/css/bootstrap")
+        link(rel="stylesheet", href="/css/bootstrap-icons")
         block head
             link(rel="stylesheet", href="/css/global")
     body
