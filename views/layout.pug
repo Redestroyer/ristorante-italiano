@@ -11,9 +11,9 @@ html(lang="en")
         link(rel="stylesheet", href="/css/bootstrap-icons")
         block head
             link(rel="stylesheet", href="/css/global")
-    body
+    body.d-flex.flex-column.min-vh-100
         include nav.pug
-        block content
+        main.container.flex-grow-1: block content
         include footer.pug
         script(src="/js/bootstrap")
         

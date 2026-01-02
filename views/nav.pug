@@ -3,8 +3,7 @@ nav.navbar.navbar-expand-lg.bg-primary(data-bs-theme="dark")
         a.navbar-brand(href="/")
             img(src="images/logo", alt="Logo", width="32", height="32", class="d-inline-block align-text-top")
             | Ristorante Italiano
-        button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
-            span.navbar-toggler-icon
+        button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation"): span.navbar-toggler-icon
         #navbarNav.collapse.navbar-collapse
             -
                 const pages = [
@@ -17,5 +16,4 @@ nav.navbar.navbar-expand-lg.bg-primary(data-bs-theme="dark")
             ol.navbar-nav.ms-auto
                 each page in pages
                     - const current = title == page.name;
-                    li.nav-item
-                        a.nav-link(href=page.link, class={active:current}, aria-current=current)= page.name
+                    li.nav-item: a.nav-link(href=page.link, class={active:current}, aria-current=current)= page.name

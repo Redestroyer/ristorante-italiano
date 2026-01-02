@@ -1,5 +1,7 @@
-import Express from "express";
-import { readFileSync } from "fs";
+import { FastifyInstance } from "fastify";
+
+import path from "path";
+import { importJSON } from "../json";
 
 type Rating = {
     author: string;
@@ -8,8 +10,10 @@ type Rating = {
     quote: string;
 }
 
-export default Express.Router().get("/", (req, res, next) => {
-    const content = readFileSync(process.cwd() + "/public/json/ratings.json");
-    const ratings: Rating[] = JSON.parse(content.toString());
-    res.render("about", { title: "Chi Siamo", ratings });
-});
+export default async function(app: FastifyInstance) {
+    app.get("/", async (request, reply) => {
+        const ratings: Rating[] = await importJSON(path.join(process.cwd(), "public/json/ratings.json"));
+
+        return reply.viewAsync("about", { title: "Chi Siamo", ratings });
+    });
+};

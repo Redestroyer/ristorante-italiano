@@ -1,10 +1,28 @@
-import Express from "express";
-import Logger from "../logger";
+import { FastifyInstance } from "fastify";
 
-export default Express.Router().get("/", (req, res, next) => {
-    res.render("reserving", { title: "Prenotazioni" });
-}).post("/", (req, res, next) => {
-    const { name, email, phone, date, time, guests } = req.body;
-    Logger.info(`Prenotazione ricevuta da ${name} <${email}> (${phone}) per il ${date} alle ${time} per ${guests} ospiti.`);
-    res.render("reserving", { title: "Prenotazioni", success: true });
+import { Static, Type } from "@sinclair/typebox";
+
+export const Reservation = Type.Object({
+    name: Type.String(),
+    email: Type.String(),
+    phone: Type.String(),
+    date: Type.String(),
+    time: Type.String(),
+    guests: Type.Number()
 });
+export type Reservation = Static<typeof Reservation>;
+const PostOpts = {
+    schema: {
+        body: Reservation
+    }
+};
+
+export default async function(app: FastifyInstance) {
+    app.get("/", async (request, reply) => {
+        return reply.viewAsync("reserving", { title: "Prenotazioni" });
+    }).post<{ Body: Reservation }>("/", PostOpts, async (request, reply) => {
+        const { name, email, phone, date, time, guests } = request.body;
+        app.log.info(`Received reservation from ${name} (${email}, ${phone}) for ${guests} guests on ${date} at ${time}`);
+        return reply.viewAsync("reserving", { title: "Prenotazioni", success: true });
+    });
+};

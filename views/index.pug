@@ -9,8 +9,7 @@ block content
             const images = ["Exterior1", "Interior1", "MargheritaPizza", "Cleiton", "Lasagna"];
         .carousel-inner
             each value, index in images
-                .carousel-item(class={active: index === 0}, data-bs-interval="5000")
-                    img.d-block.mx-auto(src=`/images/${value}`, alt=value, height="500")
+                .carousel-item(class={active: index === 0}, data-bs-interval="5000"): img.d-block.mx-auto(src=`/images/${value}`, alt=value, height="500")
     section
         h2 La Nostra Specialità
         p Vieni a provare i nostri piatti autentici preparati con ingredienti freschi e di alta qualità. Dalla pasta fatta in casa alle pizze cotte nel forno a legna, ogni boccone è un viaggio in Italia.
