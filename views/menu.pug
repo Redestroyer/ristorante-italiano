@@ -6,12 +6,12 @@ block content
         p Scopri i piatti deliziosi che offriamo!
     section
         h2 Il nostro menù
-        #carouselMenu.carousel.slide.d-block.mx-auto.w-50.bg-dark(style="min-height: 300px;")
+        #carouselMenu.carousel.slide.d-block.mx-auto.w-75.bg-dark(style="min-height: 300px;")
             .carousel-indicators
-                each _, index in food
+                each _, index in foods
                     button(type="button", data-bs-target="#carouselMenu", data-bs-slide-to=index, aria-label=`Slide ${index + 1}` class={active: index === 0}, aria-current=(index === 0).toString())
             .carousel-inner
-                each value, index in food
+                each value, index in foods
                     .carousel-item(class={active: index === 0})
                         img.d-block.mx-auto(src=`/images/${value.image}`, alt=value.name, width="500", height="500")
                         .carousel-caption.d-block.bg-dark.bg-opacity-50

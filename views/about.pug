@@ -16,20 +16,13 @@ block content
         h4 Valutazioni principali
         //- Ratings.
         div.row(style={width: "72rem"})
-            //-
-                .card
-                    .card-body
-                        blockquote.blockquote
-                            p "Il cibo qui è davvero ottimo. Non so cosa mi aspettassi, ma credo di averlo sottovalutato. #[i I mean, really, I am sorry for underestimating you, lads.]"
-                            footer.blockquote-footer #[i Gordon Ramsay], capocuoco britannico
             -
-                // There is padding for `padEnd` to work correctly.
+                // There is padding in `star` for `padEnd` to work correctly.
                 const star     = "<i class='bi bi-star'     ></i>"; // 
                 const halfStar = "<i class='bi bi-star-half'></i>"; // 
                 const fullStar = "<i class='bi bi-star-fill'></i>"; // 
             each rating in ratings
-                .col.card
-                    .card-body
+                .col.card: .card-body
                         h5.card-title!= (fullStar.repeat(Math.floor(rating.rating/2)) + (rating.rating % 2 ? halfStar : "")).padEnd(155, star)
                         blockquote.blockquote
                             p "!{rating.quote}"
